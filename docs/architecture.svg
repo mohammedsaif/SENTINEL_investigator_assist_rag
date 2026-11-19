@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="860" fill="#ffffff"/>
+
+  <text x="600" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">SENTINEL Explain API: architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-size="14" fill="#475569">Three stores, one job each. The rule engine decides, the LLM only explains.</text>
+
+  <!-- Investigator + API -->
+  <rect x="40" y="95" width="170" height="64" rx="32" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="125" y="123" text-anchor="middle" font-size="15" font-weight="600" fill="#0f172a">Investigator</text>
+  <text x="125" y="143" text-anchor="middle" font-size="12" fill="#475569">POST /explain {txn_id}</text>
+
+  <rect x="290" y="88" width="620" height="78" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="600" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#0c4a6e">FastAPI service  (app/explain.py orchestrator)</text>
+  <text x="600" y="142" text-anchor="middle" font-size="13" fill="#0c4a6e">fetch → rules → retrieve → LLM → ground citations → JSON</text>
+
+  <line x1="210" y1="127" x2="288" y2="127" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Three stores -->
+  <!-- Supabase -->
+  <rect x="40" y="220" width="350" height="330" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="215" y="250" text-anchor="middle" font-size="18" font-weight="700" fill="#064e3b">Supabase (Postgres)</text>
+  <text x="215" y="271" text-anchor="middle" font-size="13" fill="#047857">Facts about one transaction</text>
+  <rect x="60" y="288" width="310" height="62" rx="6" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="72" y="309" font-size="13" font-weight="600" fill="#064e3b">transactions  (110,000 rows)</text>
+  <text x="72" y="328" font-size="12" fill="#334155">customer_id, device_id, merchant_id, amount,</text>
+  <text x="72" y="343" font-size="12" fill="#334155">channel, merchant_category, time, split</text>
+  <rect x="60" y="358" width="310" height="62" rx="6" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="72" y="379" font-size="13" font-weight="600" fill="#064e3b">features</text>
+  <text x="72" y="398" font-size="12" fill="#334155">txn_count_last_1h, amount_to_avg_ratio, is_new_device,</text>
+  <text x="72" y="413" font-size="12" fill="#334155">is_night, has_recent_failures, is_new_account ...</text>
+  <rect x="60" y="428" width="310" height="44" rx="6" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="72" y="448" font-size="13" font-weight="600" fill="#064e3b">labels</text>
+  <text x="72" y="464" font-size="12" fill="#334155">fraud_label, split (used for evaluation only)</text>
+  <text x="215" y="498" text-anchor="middle" font-size="12" font-weight="600" fill="#064e3b">Why: point lookup by primary key,</text>
+  <text x="215" y="515" text-anchor="middle" font-size="12" fill="#334155">fixed columns, easy to filter by split and label</text>
+  <text x="215" y="535" text-anchor="middle" font-size="11" fill="#047857">Query: SELECT ... WHERE transaction_id = ?</text>
+
+  <!-- Neo4j -->
+  <rect x="425" y="220" width="350" height="330" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="600" y="250" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">Neo4j (graph)</text>
+  <text x="600" y="271" text-anchor="middle" font-size="13" fill="#1d4ed8">Who is connected to whom</text>
+  <!-- mini graph -->
+  <circle cx="480" cy="335" r="26" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="480" y="339" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a8a">Customer</text>
+  <circle cx="600" cy="335" r="26" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="600" y="339" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a8a">Device</text>
+  <circle cx="720" cy="335" r="26" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="720" y="339" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a8a">Merchant</text>
+  <line x1="506" y1="335" x2="572" y2="335" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="539" y="326" text-anchor="middle" font-size="10" fill="#1e3a8a">USED_DEVICE</text>
+  <path d="M 480 309 C 480 270, 720 270, 720 309" fill="none" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="600" y="300" text-anchor="middle" font-size="10" fill="#1e3a8a">PAID {transaction_id, amount, fraud_label}</text>
+  <circle cx="600" cy="400" r="22" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="600" y="404" text-anchor="middle" font-size="10" font-weight="600" fill="#78350f">Customer</text>
+  <line x1="600" y1="378" x2="600" y2="361" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="520" y="404" text-anchor="middle" font-size="10" fill="#78350f">another customer</text>
+  <text x="690" y="404" text-anchor="start" font-size="10" fill="#78350f">on the same device</text>
+  <text x="600" y="442" text-anchor="middle" font-size="12" fill="#334155">15,809 customers, 16,814 devices, 1,998 merchants</text>
+  <text x="600" y="458" text-anchor="middle" font-size="12" fill="#334155">17,151 USED_DEVICE edges, 50,000 PAID edges</text>
+  <text x="600" y="486" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">Why: fraud rings are relationships (shared devices,</text>
+  <text x="600" y="503" text-anchor="middle" font-size="12" fill="#334155">fraud neighbours). One Cypher pattern, no recursive joins</text>
+  <text x="600" y="535" text-anchor="middle" font-size="11" fill="#1d4ed8">Query: history of this customer and device</text>
+
+  <!-- Qdrant -->
+  <rect x="810" y="220" width="350" height="330" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="985" y="250" text-anchor="middle" font-size="18" font-weight="700" fill="#4c1d95">Qdrant (vectors)</text>
+  <text x="985" y="271" text-anchor="middle" font-size="13" fill="#6d28d9">Which policy applies</text>
+  <rect x="830" y="288" width="310" height="62" rx="6" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="842" y="309" font-size="13" font-weight="600" fill="#4c1d95">collection: sentinel_corpus</text>
+  <text x="842" y="328" font-size="12" fill="#334155">270 chunks, 3072-d vectors, cosine distance</text>
+  <text x="842" y="343" font-size="12" fill="#334155">Gemini Embedding 2 (RETRIEVAL_QUERY at search)</text>
+  <rect x="830" y="358" width="310" height="62" rx="6" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="842" y="379" font-size="13" font-weight="600" fill="#4c1d95">payload per chunk</text>
+  <text x="842" y="398" font-size="12" fill="#334155">source_document, chunk_number, title, text</text>
+  <text x="842" y="413" font-size="12" fill="#334155">playbooks, RBI/NPCI guidelines, notes, chargebacks</text>
+  <text x="985" y="448" text-anchor="middle" font-size="12" font-weight="600" fill="#4c1d95">Why: the policy that means the same thing as the</text>
+  <text x="985" y="465" text-anchor="middle" font-size="12" fill="#334155">risk signal, even in different words (semantic kNN).</text>
+  <text x="985" y="482" text-anchor="middle" font-size="12" fill="#334155">The payload carries the IDs needed to cite.</text>
+  <text x="985" y="535" text-anchor="middle" font-size="11" fill="#6d28d9">Query: top-5 kNN on reason-code text</text>
+
+  <!-- API to stores -->
+  <path d="M 400 166 L 400 190 L 215 190 L 215 218" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="300" y="184" text-anchor="middle" font-size="12" fill="#334155">1. transaction + features</text>
+  <line x1="600" y1="166" x2="600" y2="218" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="612" y="200" font-size="12" fill="#334155">2. customer_id + device_id → history</text>
+  <path d="M 800 166 L 800 190 L 985 190 L 985 218" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="900" y="184" text-anchor="middle" font-size="12" fill="#334155">4. top-5 policy chunks</text>
+
+  <!-- Rule engine -->
+  <rect x="290" y="600" width="260" height="70" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="420" y="627" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">Rule engine (rules.yaml)</text>
+  <text x="420" y="647" text-anchor="middle" font-size="12" fill="#7c2d12">features + graph → fired reason codes</text>
+  <text x="420" y="662" text-anchor="middle" font-size="11" fill="#7c2d12">3. deterministic, auditable, evidence kept</text>
+
+  <!-- Euri embeddings -->
+  <rect x="650" y="600" width="260" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="780" y="627" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">Euri: embedding model</text>
+  <text x="780" y="647" text-anchor="middle" font-size="12" fill="#4c1d95">codes → retrieval query vector</text>
+
+  <path d="M 215 550 L 215 575 L 380 575 L 380 598" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <path d="M 600 550 L 600 575 L 460 575 L 460 598" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="550" y1="635" x2="648" y2="635" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <path d="M 780 598 L 780 575 L 985 575 L 985 552" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+
+  <!-- LLM -->
+  <rect x="290" y="715" width="620" height="68" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="600" y="742" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">LLM via Euri (gemini-2.5-flash) → JSON</text>
+  <text x="600" y="763" text-anchor="middle" font-size="12" fill="#7f1d1d">gets: features (label removed), graph stats, fired codes, policy chunks. Explains, never invents codes.</text>
+  <path d="M 420 670 L 420 713" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <path d="M 985 552 L 985 575 L 1050 575 L 1050 749 L 912 749" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <path d="M 100 550 L 100 749 L 288 749" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+
+  <!-- Output -->
+  <rect x="290" y="805" width="620" height="38" rx="19" fill="#ecfccb" stroke="#65a30d" stroke-width="2"/>
+  <text x="600" y="829" text-anchor="middle" font-size="13" font-weight="600" fill="#365314">Citation grounding (drop chunks not retrieved) → risk summary, reason codes, action, cited sources</text>
+  <line x1="600" y1="783" x2="600" y2="803" stroke="#475569" stroke-width="1.8" marker-end="url(#arr)"/>
+  <path d="M 290 824 L 20 824 L 20 127 L 38 127" fill="none" stroke="#475569" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <text x="12" y="480" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 12 480)">JSON back to the investigator</text>
+</svg>

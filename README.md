@@ -24,6 +24,12 @@ POST /explain  {"transaction_id": "T000123"}
 
 ## Architecture
 
+![SENTINEL architecture: which database stores what](docs/architecture.png)
+
+Diagram files: [`docs/architecture.png`](docs/architecture.png) (image shown above) and [`docs/architecture.svg`](docs/architecture.svg) (editable vector source).
+
+The same flow as a Mermaid diagram (renders on GitHub):
+
 ```mermaid
 flowchart LR
     INV([Investigator]) -->|POST /explain txn_id| API[FastAPI<br/>/explain]
@@ -152,6 +158,7 @@ app/
     transactions.py  Supabase + MongoDB backends
     graph.py         Neo4j neighbourhood Cypher
     policy.py        Qdrant + Gemini Embedding 2 (via Euri) retrieval
+docs/                architecture.png / architecture.svg diagram, screenshots/
 scripts/             run_test_transactions, eval_retrieval, list_policy_docs
 eval/                retrieval_questions.json
 results/             saved /explain responses and eval reports
