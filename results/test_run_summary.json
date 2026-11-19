@@ -1,0 +1,140 @@
+{
+  "accuracy_flag_vs_label": 0.7,
+  "rows": [
+    {
+      "transaction_id": "TX_0000082299",
+      "true_label": "fraud",
+      "risk_level": "HIGH",
+      "action": "HOLD_FOR_REVIEW",
+      "reason_codes": [
+        "AMT_HIGH",
+        "AMT_ABS_HIGH",
+        "VELOCITY_1H",
+        "NIGHT_TXN",
+        "RECENT_FAILURES"
+      ],
+      "n_citations": 1,
+      "correct": true,
+      "latency_ms": 24141
+    },
+    {
+      "transaction_id": "TX_0000082609",
+      "true_label": "fraud",
+      "risk_level": "MEDIUM",
+      "action": "HOLD_FOR_REVIEW",
+      "reason_codes": [
+        "NIGHT_TXN",
+        "RECENT_FAILURES"
+      ],
+      "n_citations": 2,
+      "correct": true,
+      "latency_ms": 18249
+    },
+    {
+      "transaction_id": "TX_0000083035",
+      "true_label": "fraud",
+      "risk_level": "HIGH",
+      "action": "HOLD_FOR_REVIEW",
+      "reason_codes": [
+        "AMT_HIGH",
+        "VELOCITY_1H",
+        "NIGHT_TXN",
+        "RECENT_FAILURES",
+        "MCC_HIGH_RISK"
+      ],
+      "n_citations": 1,
+      "correct": true,
+      "latency_ms": 18183
+    },
+    {
+      "transaction_id": "TX_0000083044",
+      "true_label": "fraud",
+      "risk_level": "HIGH",
+      "action": "HOLD_FOR_REVIEW",
+      "reason_codes": [
+        "AMT_ABS_HIGH",
+        "NIGHT_TXN",
+        "RECENT_FAILURES"
+      ],
+      "n_citations": 0,
+      "correct": true,
+      "latency_ms": 16405
+    },
+    {
+      "transaction_id": "TX_0000083048",
+      "true_label": "fraud",
+      "risk_level": "HIGH",
+      "action": "HOLD_FOR_REVIEW",
+      "reason_codes": [
+        "AMT_HIGH",
+        "NIGHT_TXN",
+        "RECENT_FAILURES"
+      ],
+      "n_citations": 0,
+      "correct": true,
+      "latency_ms": 17897
+    },
+    {
+      "transaction_id": "TX_0000082051",
+      "true_label": "genuine",
+      "risk_level": "LOW",
+      "action": "APPROVE",
+      "reason_codes": [
+        "NIGHT_TXN"
+      ],
+      "n_citations": 1,
+      "correct": true,
+      "latency_ms": 24272
+    },
+    {
+      "transaction_id": "TX_0000082052",
+      "true_label": "genuine",
+      "risk_level": "MEDIUM",
+      "action": "STEP_UP_AUTH",
+      "reason_codes": [
+        "NEW_DEVICE",
+        "NIGHT_TXN"
+      ],
+      "n_citations": 1,
+      "correct": false,
+      "latency_ms": 18862
+    },
+    {
+      "transaction_id": "TX_0000082053",
+      "true_label": "genuine",
+      "risk_level": "LOW",
+      "action": "APPROVE",
+      "reason_codes": [
+        "NIGHT_TXN"
+      ],
+      "n_citations": 1,
+      "correct": true,
+      "latency_ms": 19597
+    },
+    {
+      "transaction_id": "TX_0000082054",
+      "true_label": "genuine",
+      "risk_level": "LOW",
+      "action": "STEP_UP_AUTH",
+      "reason_codes": [
+        "NIGHT_TXN"
+      ],
+      "n_citations": 1,
+      "correct": false,
+      "latency_ms": 19168
+    },
+    {
+      "transaction_id": "TX_0000082055",
+      "true_label": "genuine",
+      "risk_level": "MEDIUM",
+      "action": "STEP_UP_AUTH",
+      "reason_codes": [
+        "NIGHT_TXN",
+        "RECENT_FAILURES"
+      ],
+      "n_citations": 2,
+      "correct": false,
+      "latency_ms": 19745
+    }
+  ]
+}

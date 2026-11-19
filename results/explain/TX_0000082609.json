@@ -1,0 +1,67 @@
+{
+  "transaction_id": "TX_0000082609",
+  "risk_level": "MEDIUM",
+  "risk_summary": "Transaction TX_0000082609 was flagged with reason codes NIGHT_TXN and RECENT_FAILURES. The late-night transaction (hour 2) of INR 7399.40 is 4.76 times the customer's average transaction amount and follows 4 failed transactions. The graph neighbourhood shows zero prior fraud links.",
+  "reason_codes": [
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    },
+    {
+      "code": "RECENT_FAILURES",
+      "description": "Customer had recent failed transactions before this one",
+      "evidence": "has_recent_failures=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "HOLD_FOR_REVIEW",
+  "action_rationale": "The transaction exhibits risk due to its execution at an unusual night hour (NIGHT_TXN) following multiple prior transaction failures (RECENT_FAILURES). While historical case notes describe similar indicators such as payments coming mostly at night or high decline rate patterns, the provided policy excerpts do not contain explicit operational rules for these reason codes, warranting a manual review.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-057-transaction-laundering.txt",
+      "chunk_id": "1",
+      "quote": "payments coming mostly at night"
+    },
+    {
+      "document": "investigator_note/note-085-card-testing.txt",
+      "chunk_id": "1",
+      "quote": "high decline rate"
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: NIGHT_TXN: Transaction at an unusual hour for this customer; RECENT_FAILURES: Customer had recent failed transactions before this one. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-057-transaction-laundering.txt",
+        "chunk_id": "1",
+        "score": 0.6772
+      },
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6766
+      },
+      {
+        "document": "investigator_note/note-085-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6751
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.674
+      },
+      {
+        "document": "investigator_note/note-003-triangulation.txt",
+        "chunk_id": "1",
+        "score": 0.6731
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 18249
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "transaction_id": "TX_0000082054",
+  "risk_level": "LOW",
+  "risk_summary": "Transaction TX_0000082054 of INR 3,342.44 occurred at 01:00 UTC (NIGHT_TXN), but originates from a known device with an account age of 1,121 days. The transaction amount is close to the customer's average spending ratio (1.34x) and the device/customer graph shows zero fraudulent neighbours.",
+  "reason_codes": [
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "STEP_UP_AUTH",
+  "action_rationale": "The transaction triggered a single NIGHT_TXN reason code due to late-night activity. While historical investigator notes observe that night timing occurred in merchant laundering cases, the supplied policy excerpts do not provide explicit decision rules for isolated night transactions on known devices. STEP_UP_AUTH is recommended to confirm cardholder identity before proceeding.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-057-transaction-laundering.txt",
+      "chunk_id": "1",
+      "quote": "Noted payments coming mostly at night."
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: NIGHT_TXN: Transaction at an unusual hour for this customer. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6593
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.656
+      },
+      {
+        "document": "investigator_note/note-059-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6522
+      },
+      {
+        "document": "investigator_note/note-057-transaction-laundering.txt",
+        "chunk_id": "1",
+        "score": 0.6513
+      },
+      {
+        "document": "investigator_note/note-004-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6502
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 19168
+  }
+}

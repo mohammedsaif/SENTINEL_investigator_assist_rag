@@ -1,0 +1,56 @@
+{
+  "transaction_id": "TX_0000082051",
+  "risk_level": "LOW",
+  "risk_summary": "Transaction TX_0000082051 for Rs 1,479.01 was placed via UPI for travel MCC at hour 0 on a known device (is_new_device=false). The transaction amount is below the customer's average (amount_to_avg_ratio of 0.4886) and the graph neighbourhood is completely clean with 0 fraud counts. The single reason code fired is NIGHT_TXN due to the late hour.",
+  "reason_codes": [
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "APPROVE",
+  "action_rationale": " approval is recommended because the transaction was executed on an existing, non-new device (is_new_device=false) with zero fraud history on the customer or device graph. The transaction amount (Rs 1,479.01) is lower than the customer's average transaction value, and there are no recent payment failures. The only flag is NIGHT_TXN due to the execution time at night (hour 0). Note that the provided policy excerpts focus on card skimming and transaction laundering investigations rather than standard operating policy for routine night-time UPI travel transactions, so the provided excerpts do not directly cover the standard decision rules for this scenario.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-057-transaction-laundering.txt",
+      "chunk_id": "1",
+      "quote": "Noted payments coming mostly at night."
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: NIGHT_TXN: Transaction at an unusual hour for this customer. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6593
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.656
+      },
+      {
+        "document": "investigator_note/note-059-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6522
+      },
+      {
+        "document": "investigator_note/note-057-transaction-laundering.txt",
+        "chunk_id": "1",
+        "score": 0.6513
+      },
+      {
+        "document": "investigator_note/note-004-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6502
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 24272
+  }
+}

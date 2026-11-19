@@ -1,0 +1,52 @@
+[
+  {
+    "id": "Q01",
+    "question": "What should an analyst do when a customer is tricked by a caller into sharing an OTP?",
+    "expected_doc": "playbook/pb-otp-vishing.txt"
+  },
+  {
+    "id": "Q02",
+    "question": "How should an account takeover from a newly registered device be handled?",
+    "expected_doc": "playbook/pb-ato-new-device.txt"
+  },
+  {
+    "id": "Q03",
+    "question": "What are the containment steps for a remote access app scam where the victim installed screen sharing software?",
+    "expected_doc": "playbook/pb-remote-access.txt"
+  },
+  {
+    "id": "Q04",
+    "question": "How do I detect and respond to card testing with many small payments at one merchant?",
+    "expected_doc": "playbook/pb-card-testing.txt"
+  },
+  {
+    "id": "Q05",
+    "question": "What is the procedure when a mule account is receiving fraud proceeds?",
+    "expected_doc": "playbook/pb-mule-account.txt"
+  },
+  {
+    "id": "Q06",
+    "question": "How is a fraudulent UPI collect request approved by the victim handled?",
+    "expected_doc": "playbook/pb-collect-request.txt"
+  },
+  {
+    "id": "Q07",
+    "question": "What are the signs of SIM swap fraud and what should the bank do?",
+    "expected_doc": "playbook/pb-sim-swap.txt"
+  },
+  {
+    "id": "Q08",
+    "question": "What are the RBI rules on cooling period for newly added beneficiaries?",
+    "expected_doc": "guideline/rbi-beneficiary-cooling.txt"
+  },
+  {
+    "id": "Q09",
+    "question": "What are the NPCI limits for UPI transactions?",
+    "expected_doc": "guideline/npci-upi-limits.txt"
+  },
+  {
+    "id": "Q10",
+    "question": "How should digital arrest impersonation scams by fake police callers be handled?",
+    "expected_doc": "playbook/pb-digital-arrest-copy.txt"
+  }
+]

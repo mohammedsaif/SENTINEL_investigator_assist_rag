@@ -1,0 +1,367 @@
+{
+  "hit@5": 1.0,
+  "mrr": 1.0,
+  "n": 10,
+  "rows": [
+    {
+      "id": "Q01",
+      "question": "What should an analyst do when a customer is tricked by a caller into sharing an OTP?",
+      "expected_doc": [
+        "playbook/pb-otp-vishing.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-otp-vishing.txt",
+          "chunk_id": "1",
+          "score": 0.7609
+        },
+        {
+          "document": "playbook/pb-otp-vishing.txt",
+          "chunk_id": "2",
+          "score": 0.7586
+        },
+        {
+          "document": "investigator_note/note-064-otp-vishing.txt",
+          "chunk_id": "1",
+          "score": 0.726
+        },
+        {
+          "document": "investigator_note/note-029-otp-vishing.txt",
+          "chunk_id": "1",
+          "score": 0.7259
+        },
+        {
+          "document": "investigator_note/note-050-otp-vishing.txt",
+          "chunk_id": "1",
+          "score": 0.7126
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "question": "How should an account takeover from a newly registered device be handled?",
+      "expected_doc": [
+        "playbook/pb-ato-new-device.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-ato-new-device.txt",
+          "chunk_id": "1",
+          "score": 0.7494
+        },
+        {
+          "document": "playbook/pb-ato-new-device.txt",
+          "chunk_id": "2",
+          "score": 0.7481
+        },
+        {
+          "document": "guideline/rbi-digital-payment-security.txt",
+          "chunk_id": "3",
+          "score": 0.6817
+        },
+        {
+          "document": "investigator_note/note-090-ato-new-device.txt",
+          "chunk_id": "1",
+          "score": 0.6704
+        },
+        {
+          "document": "playbook/pb-sim-swap.txt",
+          "chunk_id": "1",
+          "score": 0.669
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "question": "What are the containment steps for a remote access app scam where the victim installed screen sharing software?",
+      "expected_doc": [
+        "playbook/pb-remote-access.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-remote-access.txt",
+          "chunk_id": "2",
+          "score": 0.794
+        },
+        {
+          "document": "playbook/pb-remote-access.txt",
+          "chunk_id": "1",
+          "score": 0.7598
+        },
+        {
+          "document": "playbook/pb-digital-arrest-copy.txt",
+          "chunk_id": "2",
+          "score": 0.681
+        },
+        {
+          "document": "investigator_note/note-055-remote-access.txt",
+          "chunk_id": "1",
+          "score": 0.6757
+        },
+        {
+          "document": "playbook/pb-sim-swap.txt",
+          "chunk_id": "2",
+          "score": 0.6705
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "question": "How do I detect and respond to card testing with many small payments at one merchant?",
+      "expected_doc": [
+        "playbook/pb-card-testing.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-card-testing.txt",
+          "chunk_id": "1",
+          "score": 0.7141
+        },
+        {
+          "document": "playbook/pb-card-testing.txt",
+          "chunk_id": "2",
+          "score": 0.6681
+        },
+        {
+          "document": "playbook/pb-transaction-laundering.txt",
+          "chunk_id": "1",
+          "score": 0.6631
+        },
+        {
+          "document": "playbook/pb-skimming.txt",
+          "chunk_id": "1",
+          "score": 0.6425
+        },
+        {
+          "document": "investigator_note/note-085-card-testing.txt",
+          "chunk_id": "1",
+          "score": 0.6422
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "question": "What is the procedure when a mule account is receiving fraud proceeds?",
+      "expected_doc": [
+        "playbook/pb-mule-account.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-mule-account.txt",
+          "chunk_id": "1",
+          "score": 0.7863
+        },
+        {
+          "document": "playbook/pb-mule-account.txt",
+          "chunk_id": "2",
+          "score": 0.7677
+        },
+        {
+          "document": "guideline/rbi-mule-accounts.txt",
+          "chunk_id": "1",
+          "score": 0.7616
+        },
+        {
+          "document": "playbook/pb-job-scam-mule.txt",
+          "chunk_id": "1",
+          "score": 0.7225
+        },
+        {
+          "document": "investigator_note/note-076-mule-account.txt",
+          "chunk_id": "1",
+          "score": 0.7211
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "question": "How is a fraudulent UPI collect request approved by the victim handled?",
+      "expected_doc": [
+        "playbook/pb-collect-request.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-collect-request.txt",
+          "chunk_id": "1",
+          "score": 0.7901
+        },
+        {
+          "document": "guideline/npci-upi-collect.txt",
+          "chunk_id": "1",
+          "score": 0.7587
+        },
+        {
+          "document": "investigator_note/note-075-collect-request.txt",
+          "chunk_id": "1",
+          "score": 0.7309
+        },
+        {
+          "document": "playbook/pb-collect-request.txt",
+          "chunk_id": "2",
+          "score": 0.7274
+        },
+        {
+          "document": "guideline/npci-upi-dispute-redressal.txt",
+          "chunk_id": "2",
+          "score": 0.7221
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "question": "What are the signs of SIM swap fraud and what should the bank do?",
+      "expected_doc": [
+        "playbook/pb-sim-swap.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-sim-swap.txt",
+          "chunk_id": "1",
+          "score": 0.7779
+        },
+        {
+          "document": "playbook/pb-sim-swap.txt",
+          "chunk_id": "2",
+          "score": 0.7351
+        },
+        {
+          "document": "investigator_note/note-012-sim-swap.txt",
+          "chunk_id": "1",
+          "score": 0.6806
+        },
+        {
+          "document": "playbook/pb-otp-vishing.txt",
+          "chunk_id": "1",
+          "score": 0.6763
+        },
+        {
+          "document": "playbook/pb-ato-new-device.txt",
+          "chunk_id": "1",
+          "score": 0.6693
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "question": "What are the RBI rules on cooling period for newly added beneficiaries?",
+      "expected_doc": [
+        "guideline/rbi-beneficiary-cooling.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "guideline/rbi-beneficiary-cooling.txt",
+          "chunk_id": "1",
+          "score": 0.7868
+        },
+        {
+          "document": "guideline/rbi-customer-liability.txt",
+          "chunk_id": "1",
+          "score": 0.6587
+        },
+        {
+          "document": "guideline/rbi-digital-payment-security.txt",
+          "chunk_id": "3",
+          "score": 0.658
+        },
+        {
+          "document": "guideline/rbi-failed-transactions-tat.txt",
+          "chunk_id": "1",
+          "score": 0.6505
+        },
+        {
+          "document": "guideline/npci-imps-neft-recall.txt",
+          "chunk_id": "1",
+          "score": 0.6478
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "question": "What are the NPCI limits for UPI transactions?",
+      "expected_doc": [
+        "guideline/npci-upi-limits.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "guideline/npci-upi-limits.txt",
+          "chunk_id": "1",
+          "score": 0.7734
+        },
+        {
+          "document": "guideline/npci-upi-circle.txt",
+          "chunk_id": "1",
+          "score": 0.7056
+        },
+        {
+          "document": "guideline/npci-frm.txt",
+          "chunk_id": "1",
+          "score": 0.6856
+        },
+        {
+          "document": "guideline/npci-upi-lite.txt",
+          "chunk_id": "1",
+          "score": 0.6773
+        },
+        {
+          "document": "guideline/npci-upi-dispute-redressal.txt",
+          "chunk_id": "1",
+          "score": 0.6726
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "question": "How should digital arrest impersonation scams by fake police callers be handled?",
+      "expected_doc": [
+        "playbook/pb-digital-arrest-copy.txt"
+      ],
+      "hit": true,
+      "rank": 1,
+      "top_k": [
+        {
+          "document": "playbook/pb-digital-arrest-copy.txt",
+          "chunk_id": "1",
+          "score": 0.7257
+        },
+        {
+          "document": "playbook/pb-digital-arrest-copy.txt",
+          "chunk_id": "2",
+          "score": 0.7168
+        },
+        {
+          "document": "guideline/rbi-customer-awareness.txt",
+          "chunk_id": "1",
+          "score": 0.6694
+        },
+        {
+          "document": "investigator_note/note-008-digital-arrest.txt",
+          "chunk_id": "1",
+          "score": 0.6629
+        },
+        {
+          "document": "investigator_note/note-010-digital-arrest.txt",
+          "chunk_id": "1",
+          "score": 0.6521
+        }
+      ]
+    }
+  ]
+}

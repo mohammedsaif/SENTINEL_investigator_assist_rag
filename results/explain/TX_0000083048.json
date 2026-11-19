@@ -1,0 +1,62 @@
+{
+  "transaction_id": "TX_0000083048",
+  "risk_level": "HIGH",
+  "risk_summary": "Transaction TX_0000083048 triggered three reason codes: AMT_HIGH, NIGHT_TXN, and RECENT_FAILURES. The transaction amount of 8369.25 INR is 7.14 times the customer's average spend, occurred at 04:00 (night hours), and follows 3 recent failed transactions. The graph neighbourhood is clean with no prior fraud reported for the customer or device.",
+  "reason_codes": [
+    {
+      "code": "AMT_HIGH",
+      "description": "Amount far above the customer's normal spend",
+      "evidence": "amount_to_avg_ratio=7.1377 gt 5",
+      "source": "features"
+    },
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    },
+    {
+      "code": "RECENT_FAILURES",
+      "description": "Customer had recent failed transactions before this one",
+      "evidence": "has_recent_failures=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "HOLD_FOR_REVIEW",
+  "action_rationale": "The transaction carries multiple risk flags including a spend ratio well above normal, late-night timing, and prior transaction failures. The provided policy excerpts do not cover general policy guidelines or decision rules for handling these specific reason codes, so the transaction should be held for manual review by an investigator.",
+  "cited_sources": [],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: AMT_HIGH: Amount far above the customer's normal spend; NIGHT_TXN: Transaction at an unusual hour for this customer; RECENT_FAILURES: Customer had recent failed transactions before this one. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6862
+      },
+      {
+        "document": "investigator_note/note-003-triangulation.txt",
+        "chunk_id": "1",
+        "score": 0.6813
+      },
+      {
+        "document": "investigator_note/note-060-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6798
+      },
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.679
+      },
+      {
+        "document": "investigator_note/note-040-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6766
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 17897
+  }
+}

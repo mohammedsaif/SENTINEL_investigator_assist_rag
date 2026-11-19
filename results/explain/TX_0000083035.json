@@ -1,0 +1,80 @@
+{
+  "transaction_id": "TX_0000083035",
+  "risk_level": "HIGH",
+  "risk_summary": "Transaction TX_0000083035 triggered five reason codes: AMT_HIGH, VELOCITY_1H, NIGHT_TXN, RECENT_FAILURES, and MCC_HIGH_RISK. The transaction amount of 5947.71 is 11.261 times the customer's average spend, occurring late at night (01:00) for gift cards. Additionally, the customer shows a high velocity of 6 transactions in the last hour following 5 recent failed transactions.",
+  "reason_codes": [
+    {
+      "code": "AMT_HIGH",
+      "description": "Amount far above the customer's normal spend",
+      "evidence": "amount_to_avg_ratio=11.261 gt 5",
+      "source": "features"
+    },
+    {
+      "code": "VELOCITY_1H",
+      "description": "Burst of transactions in the last hour",
+      "evidence": "txn_count_last_1h=6.0 gte 5",
+      "source": "features"
+    },
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    },
+    {
+      "code": "RECENT_FAILURES",
+      "description": "Customer had recent failed transactions before this one",
+      "evidence": "has_recent_failures=True true",
+      "source": "features"
+    },
+    {
+      "code": "MCC_HIGH_RISK",
+      "description": "Merchant category is on the high-risk list",
+      "evidence": "merchant_category=gift_cards in ['gambling', 'crypto', 'gift_cards', 'money_transfer']",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "HOLD_FOR_REVIEW",
+  "action_rationale": "Holding the transaction for review is recommended due to the cluster of high-risk indicators including high spend multiplier, night-time velocity, recent authorization failures, and high-risk merchant category (gift_cards). Note that the provided policy excerpts consist of historical investigator case notes rather than explicit rules covering this specific situation.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-085-card-testing.txt",
+      "chunk_id": "1",
+      "quote": "Noted high decline rate with codes for invalid card or CVV."
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: AMT_HIGH: Amount far above the customer's normal spend; VELOCITY_1H: Burst of transactions in the last hour; NIGHT_TXN: Transaction at an unusual hour for this customer; RECENT_FAILURES: Customer had recent failed transactions before this one; MCC_HIGH_RISK: Merchant category is on the high-risk list. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-060-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6724
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6721
+      },
+      {
+        "document": "investigator_note/note-085-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6717
+      },
+      {
+        "document": "investigator_note/note-057-transaction-laundering.txt",
+        "chunk_id": "1",
+        "score": 0.6706
+      },
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6674
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 18183
+  }
+}

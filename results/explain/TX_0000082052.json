@@ -1,0 +1,62 @@
+{
+  "transaction_id": "TX_0000082052",
+  "risk_level": "MEDIUM",
+  "risk_summary": "Transaction TX_0000082052 for Rs 5,815.52 via UPI triggered two reason codes: NEW_DEVICE and NIGHT_TXN. The transaction took place at 01:30 UTC on an unfamiliar device, with an amount 3.44 times higher than the customer's average transaction value. The customer's device and account graph currently show no fraud history or suspicious connected nodes.",
+  "reason_codes": [
+    {
+      "code": "NEW_DEVICE",
+      "description": "Device first seen for this customer very recently",
+      "evidence": "is_new_device=True true",
+      "source": "features"
+    },
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "STEP_UP_AUTH",
+  "action_rationale": "STEP_UP_AUTH is recommended to confirm the customer's identity prior to processing, as the payment originates from a newly observed device during late-night hours. Note that the available policy excerpts consist of historical investigator case notes rather than formal policy rules defining decision thresholds for NEW_DEVICE and NIGHT_TXN scenarios.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-065-ato-new-device.txt",
+      "chunk_id": "1",
+      "quote": "Alert raised by the real-time rules engine"
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: NEW_DEVICE: Device first seen for this customer very recently; NIGHT_TXN: Transaction at an unusual hour for this customer. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6906
+      },
+      {
+        "document": "investigator_note/note-004-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6841
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6816
+      },
+      {
+        "document": "investigator_note/note-003-triangulation.txt",
+        "chunk_id": "1",
+        "score": 0.6797
+      },
+      {
+        "document": "investigator_note/note-065-ato-new-device.txt",
+        "chunk_id": "1",
+        "score": 0.6757
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 18862
+  }
+}

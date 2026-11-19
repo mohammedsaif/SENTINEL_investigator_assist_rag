@@ -1,0 +1,56 @@
+{
+  "transaction_id": "TX_0000082053",
+  "risk_level": "LOW",
+  "risk_summary": "Transaction TX_0000082053 for Rs 4050.5 via UPI triggered the NIGHT_TXN reason code due to execution at 01:00. The transaction originates from a known device and non-new city with zero fraud history in its graph neighbourhood. Overall risk is minimal despite the late-hour activity.",
+  "reason_codes": [
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "APPROVE",
+  "action_rationale": "The transaction was executed on a recognized device with no recent failures or suspicious graph linkages. While the NIGHT_TXN flag was triggered, the supplied policy excerpts (investigator case notes on skimming and transaction laundering) do not cover standard handling rules for routine night-time transactions.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-057-transaction-laundering.txt",
+      "chunk_id": "1",
+      "quote": "Noted payments coming mostly at night."
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: NIGHT_TXN: Transaction at an unusual hour for this customer. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6593
+      },
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.656
+      },
+      {
+        "document": "investigator_note/note-059-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6522
+      },
+      {
+        "document": "investigator_note/note-057-transaction-laundering.txt",
+        "chunk_id": "1",
+        "score": 0.6513
+      },
+      {
+        "document": "investigator_note/note-004-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6502
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 19597
+  }
+}

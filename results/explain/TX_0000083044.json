@@ -1,0 +1,62 @@
+{
+  "transaction_id": "TX_0000083044",
+  "risk_level": "HIGH",
+  "risk_summary": "Transaction TX_0000083044 involves a high-value UPI payment of 11,359.56 INR for gaming at 04:00 (night hours). It triggered reason codes AMT_ABS_HIGH, NIGHT_TXN, and RECENT_FAILURES due to the high transaction amount, unusual hour, and 3 recent failed attempts. The customer's device graph neighbourhood shows no previous fraud history.",
+  "reason_codes": [
+    {
+      "code": "AMT_ABS_HIGH",
+      "description": "Absolute amount above high-value threshold",
+      "evidence": "transaction_amount=11359.56 gt 10000",
+      "source": "features"
+    },
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    },
+    {
+      "code": "RECENT_FAILURES",
+      "description": "Customer had recent failed transactions before this one",
+      "evidence": "has_recent_failures=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "HOLD_FOR_REVIEW",
+  "action_rationale": "Holding the transaction for manual review allows investigators to verify the legitimacy of the high-value night-time payment following multiple failed attempts. Note that the supplied policy excerpts focus on historical card skimming, cloning, and BIN attack cases, and do not explicitly cover procedural rules for high-value UPI gaming transactions with recent failures.",
+  "cited_sources": [],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: AMT_ABS_HIGH: Absolute amount above high-value threshold; NIGHT_TXN: Transaction at an unusual hour for this customer; RECENT_FAILURES: Customer had recent failed transactions before this one. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6882
+      },
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6823
+      },
+      {
+        "document": "investigator_note/note-060-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6817
+      },
+      {
+        "document": "investigator_note/note-085-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6793
+      },
+      {
+        "document": "investigator_note/note-059-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6777
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 16405
+  }
+}

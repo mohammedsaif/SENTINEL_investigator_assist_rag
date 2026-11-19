@@ -1,0 +1,87 @@
+# Deterministic reason codes. The LLM explains these; it never invents them.
+# A rule is skipped silently if its field is missing, so you can keep rules for
+# features you have not built. Rename `field` to match your task-1 feature names.
+#
+# source: features -> field is read from the transaction + features row
+# source: graph    -> field is read from the Neo4j neighbourhood dict
+# op: gt | gte | lt | lte | eq | neq | in | true
+
+rules:
+  - code: AMT_HIGH
+    description: Amount far above the customer's normal spend
+    source: features
+    field: amount_to_avg_ratio
+    op: gt
+    value: 5
+
+  - code: AMT_ABS_HIGH
+    description: Absolute amount above high-value threshold
+    source: features
+    field: transaction_amount
+    op: gt
+    value: 10000
+
+  - code: VELOCITY_1H
+    description: Burst of transactions in the last hour
+    source: features
+    field: txn_count_last_1h
+    op: gte
+    value: 5
+
+  - code: NEW_DEVICE
+    description: Device first seen for this customer very recently
+    source: features
+    field: is_new_device
+    op: "true"
+
+  - code: GEO_MISMATCH
+    description: Transaction city differs from the customer's usual cities
+    source: features
+    field: is_new_city
+    op: "true"
+
+  - code: NIGHT_TXN
+    description: Transaction at an unusual hour for this customer
+    source: features
+    field: is_night
+    op: "true"
+
+  - code: RECENT_FAILURES
+    description: Customer had recent failed transactions before this one
+    source: features
+    field: has_recent_failures
+    op: "true"
+
+  - code: NEW_ACCOUNT
+    description: Account is newly opened
+    source: features
+    field: is_new_account
+    op: "true"
+
+  - code: MCC_HIGH_RISK
+    description: Merchant category is on the high-risk list
+    source: features
+    field: merchant_category
+    op: in
+    value: [gambling, crypto, gift_cards, money_transfer]
+
+  - code: DEVICE_SHARED
+    description: Device is shared by many distinct customers (mule / farm signal)
+    source: graph
+    field: device_customer_count
+    op: gte
+    value: 3
+
+  - code: DEVICE_FRAUD_HISTORY
+    description: Device has been used in previously confirmed fraud
+    source: graph
+    field: device_fraud_txn_count
+    op: gte
+    value: 1
+
+  - code: RING_NEIGHBOUR
+    description: Customer is linked through shared devices to fraudulent customers
+    source: graph
+    field: fraud_neighbour_count
+    op: gte
+    value: 1

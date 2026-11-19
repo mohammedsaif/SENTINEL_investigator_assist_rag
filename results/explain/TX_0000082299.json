@@ -1,0 +1,80 @@
+{
+  "transaction_id": "TX_0000082299",
+  "risk_level": "HIGH",
+  "risk_summary": "Transaction TX_0000082299 of Rs 55,955.63 for electronics triggered five risk flags: AMT_HIGH, AMT_ABS_HIGH, VELOCITY_1H, NIGHT_TXN, and RECENT_FAILURES. The transaction amount is 12.25 times the customer's average spend, occurs at night with 8 transactions in the past hour, and follows 4 recent failed attempts. Although the device/customer graph neighborhood is clean, the combined velocity, high value, and past failures indicate significant fraud risk.",
+  "reason_codes": [
+    {
+      "code": "AMT_HIGH",
+      "description": "Amount far above the customer's normal spend",
+      "evidence": "amount_to_avg_ratio=12.2542 gt 5",
+      "source": "features"
+    },
+    {
+      "code": "AMT_ABS_HIGH",
+      "description": "Absolute amount above high-value threshold",
+      "evidence": "transaction_amount=55955.63 gt 10000",
+      "source": "features"
+    },
+    {
+      "code": "VELOCITY_1H",
+      "description": "Burst of transactions in the last hour",
+      "evidence": "txn_count_last_1h=8.0 gte 5",
+      "source": "features"
+    },
+    {
+      "code": "NIGHT_TXN",
+      "description": "Transaction at an unusual hour for this customer",
+      "evidence": "is_night=True true",
+      "source": "features"
+    },
+    {
+      "code": "RECENT_FAILURES",
+      "description": "Customer had recent failed transactions before this one",
+      "evidence": "has_recent_failures=True true",
+      "source": "features"
+    }
+  ],
+  "recommended_action": "HOLD_FOR_REVIEW",
+  "action_rationale": "The transaction exhibits severe risk signals including an extreme spend spike (12.25x average ratio), rapid hourly velocity (8 transactions), recent failures, and late-night timing. Note 003 highlights past fraud involving high-value electronics purchases ('Noted orders for high-demand electronics.'), but the policy excerpts do not explicitly state decision rules for this exact combination of reason codes. A manual hold for review is recommended to verify legitimate intent.",
+  "cited_sources": [
+    {
+      "document": "investigator_note/note-003-triangulation.txt",
+      "chunk_id": "1",
+      "quote": "Noted orders for high-demand electronics."
+    }
+  ],
+  "context_gaps": [],
+  "debug": {
+    "retrieval_query": "Fraud policy for: AMT_HIGH: Amount far above the customer's normal spend; AMT_ABS_HIGH: Absolute amount above high-value threshold; VELOCITY_1H: Burst of transactions in the last hour; NIGHT_TXN: Transaction at an unusual hour for this customer; RECENT_FAILURES: Customer had recent failed transactions before this one. Recommended investigator action and escalation.",
+    "retrieved": [
+      {
+        "document": "investigator_note/note-063-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6671
+      },
+      {
+        "document": "investigator_note/note-003-triangulation.txt",
+        "chunk_id": "1",
+        "score": 0.6666
+      },
+      {
+        "document": "investigator_note/note-060-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6658
+      },
+      {
+        "document": "investigator_note/note-085-card-testing.txt",
+        "chunk_id": "1",
+        "score": 0.6651
+      },
+      {
+        "document": "investigator_note/note-045-skimming.txt",
+        "chunk_id": "1",
+        "score": 0.6603
+      }
+    ],
+    "dropped_ungrounded_citations": [],
+    "llm_model": "gemini-2.5-flash",
+    "latency_ms": 24141
+  }
+}
